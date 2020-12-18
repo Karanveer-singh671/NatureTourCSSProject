@@ -20,14 +20,16 @@ body {
 	font-size: 16px;
 	line-height: 1.7; /* means 1.7x bigger than predefined line-height */
 	color: #777;
+	padding: 30px; /* padding is not being inherited just applying 30 px padding across body */
 }
 
 .header {
 	height: 95vh; /* height of the header box should be 95% of the height of the viewport  */
 	background-image: linear-gradient(
 			to right,
-			rgba(126, 213, 111, 0.8), /* set the color like before but now use opacity so can kinda see second hero image */
-			rgba(40, 180, 131, 0.8)
+			rgba(126, 213, 111, 0.8),
+			/* set the color like before but now use opacity so can kinda see second hero image */
+				rgba(40, 180, 131, 0.8)
 		),
 		url("../img/hero.jpg");
 	/* Linear-gradient first will show gradient first and light green on one side then dark green other side
@@ -40,4 +42,7 @@ body {
   Ensures top of image stays the same but bottom will get cropped if moved and smaller page size 
   center used for center to be the same, so top and bottom cropped
   */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh ,0 100%) /* 
+  specify 4 corners (going clockwise specifying that want to clip off, start at 0 0, all the way across x axis 100% with 0 on the y (top right corner) */
 }
