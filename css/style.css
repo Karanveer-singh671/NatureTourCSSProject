@@ -50,44 +50,56 @@ body {
 		0 100%
 	); /* 
   specify 4 corners (going clockwise specifying that want to clip off, start at 0 0, all the way across x axis 100% with 0 on the y (top right corner) */
-  position: relative; /* logo-box position should not move inside the header box (top and left declaritives reference from this parent element so need relative positioning */
+	position: relative; /* logo-box position should not move inside the header box (top and left declaritives reference from this parent element so need relative positioning */
 }
 
 .logo-box {
 	/* absolute positioning */
-  position: absolute;
-  top: 40px; /* 40px from the top of the parent element set to relative positioning */
-  left: 40px; /* 40px to the top of the parent element set to relative positioning */
+	position: absolute;
+	top: 40px; /* 40px from the top of the parent element set to relative positioning */
+	left: 40px; /* 40px to the top of the parent element set to relative positioning */
 }
 
 .logo {
-  height: 35px;
-  /* width figured out by browser if set height, if set width then height figured out by browser */
+	height: 35px;
+	/* width figured out by browser if set height, if set width then height figured out by browser */
 }
 /* text should always stay in middle responsive */
 
 .text-box {
-  position: absolute;
-  top: 40%; /* 40 percent from top of parent element*/
-  left: 50%; /* 50 percent from left to start of box so need to translate it to the center of the box being 50% from left */
-  transform: translate(-50%, -50%); /* to move the box to the center of the page by moving 50% of the height and width of enclosing container 
+	position: absolute;
+	top: 40%; /* 40 percent from top of parent element*/
+	left: 50%; /* 50 percent from left to start of box so need to translate it to the center of the box being 50% from left */
+	transform: translate(
+		-50%,
+		-50%
+	); /* to move the box to the center of the page by moving 50% of the height and width of enclosing container 
   not the parent  */
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
 }
 
 .heading-primary {
-  color: #fff; /* Since this box wraps both main and sub headings the properties will be inherited by child */
-  text-transform: uppercase; /* Transform text to upper case */
+	color: #fff; /* Since this box wraps both main and sub headings the properties will be inherited by child */
+	text-transform: uppercase; /* Transform text to upper case */
 }
 /* since span is in-line display as block so main heading has own line do same for sub-heading*/
 .heading-primary-main {
-  display: block;
-  font-size: 60px; /* Specify font size here instead of parent since want different font sizes  */
-  font-weight: 400;
-  letter-spacing: 35px; /* put space between each letter in the word */
+	display: block;
+	font-size: 60px; /* Specify font size here instead of parent since want different font sizes  */
+	font-weight: 400;
+	letter-spacing: 35px; /* put space between each letter in the word */
+	animation-name: moveInLeft; /* name of animation to use for this div  */
+	animation-duration: 1s; /* duration of animation  */
+
+	/* 
+ animation-iteration-count: 1; how many times animation occurs
+ animation-timing-function: ; ease-out, ease-in etc. 
+ animation-delay: ; how long to wait before animation happens
+ 
+ */
 }
 
 .heading-primary-sub {
@@ -95,4 +107,86 @@ body {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 23.2px;
+   /*
+  animation-name: moveInRight;
+  animation-duration: 1s; 
+  can just use animation declarative 
+  */
+  animation: moveInRight 1s ease-out;
+  -webkit-animation: moveInRight 1s ease-out;
+}
+
+/* fade in from specific side for text 
+keyframes rule and give animation a name 
+
+*/
+
+@keyframes moveInLeft {
+	/* Specify each moment in time so start at 0% beginning , can do any percent we want, finish at 100% */
+	0% {
+		/*invisible initially*/
+		opacity: 0;
+		transform: translateX(
+			-100px
+		); /* more in the left than beginning so -px in x direction */
+		-webkit-transform: translateX(-100px);
+		-moz-transform: translateX(-100px);
+		-ms-transform: translateX(-100px);
+		-o-transform: translateX(-100px);
+	}
+
+	80% {
+		/*Will move text past the ending area at 80% of animation,so moves past where it ends up and goes back to ending*/
+		transform: translateX(10px);
+		-webkit-transform: translateX(20px);
+		-moz-transform: translateX(10px);
+		-ms-transform: translateX(10px);
+		-o-transform: translateX(10px);
+		-webkit-transform: translateX(10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(
+			0
+		); /* translate to 0 which will make it look how it would look without animation (ending) */
+		-webkit-transform: translate(0);
+		-moz-transform: translate(0);
+		-ms-transform: translate(0);
+		-o-transform: translate(0);
+	}
+}
+
+@keyframes moveInRight {
+	/* Specify each moment in time so start at 0% beginning , can do any percent we want, finish at 100% */
+	0% {
+		/*invisible initially*/
+		opacity: 0;
+		transform: translateX(
+			100px
+		); /* more in the left than beginning so -px in x direction */
+		-webkit-transform: translateX(100px);
+		-moz-transform: translateX(100px);
+		-ms-transform: translateX(100px);
+		-o-transform: translateX(100px);
+	}
+
+	80% {
+		/*Willmovetextpasttheendingareaat80%ofanimation,somovespastwhereitendsupandgoesbacktoending*/
+		transform: translateX(-10px);
+		-webkit-transform: translateX(-10px);
+		-moz-transform: translateX(-10px);
+		-ms-transform: translateX(-10px);
+		-o-transform: translateX(-10px);
+		-webkit-transform: translateX(-10px);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(
+			0
+		); /* translate to 0 which will make it look how it would look without animation (ending) */
+		-webkit-transform: translate(0);
+		-moz-transform: translate(0);
+		-ms-transform: translate(0);
+		-o-transform: translate(0);
+	}
 }
