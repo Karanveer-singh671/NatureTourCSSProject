@@ -5,4 +5,39 @@ Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 
+Universal selector -> will select each element on the page and apply declarations
 */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7; /* means 1.7x bigger than predefined line-height */
+	color: #777;
+}
+
+.header {
+	height: 95vh; /* height of the header box should be 95% of the height of the viewport  */
+	background-image: linear-gradient(
+			to right,
+			rgba(126, 213, 111, 0.8), /* set the color like before but now use opacity so can kinda see second hero image */
+			rgba(40, 180, 131, 0.8)
+		),
+		url("../img/hero.jpg");
+	/* Linear-gradient first will show gradient first and light green on one side then dark green other side
+    since can pass to right in linear gradient, css understands should transition color from left to right 
+  */
+	background-size: cover; /* cover: whatever width of viewport or element will always try to fit element inside box */
+	background-position: top;
+	/* ensures whatever viewport size will make sure background is always at top of container 
+  (so top of image shown if large) if want bottom of image then use bottom  
+  Ensures top of image stays the same but bottom will get cropped if moved and smaller page size 
+  center used for center to be the same, so top and bottom cropped
+  */
+}
